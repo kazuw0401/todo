@@ -7,7 +7,7 @@
                 <nav class="panel panel-default">
                     <div class="panel-heading">ログイン</div>
                     <div class="panel-body">
-                        @if ($error->any())
+                        @if ($errors->any())
                             <div class="alert alert-danger">
                                 @foreach ($errors->all() as $message)
                                     <p>{{ $message }}</p>
