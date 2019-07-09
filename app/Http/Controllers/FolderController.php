@@ -31,5 +31,4 @@ class FolderController extends Controller
             'id' => $folder->id,
         ]);
     }
-    
 }

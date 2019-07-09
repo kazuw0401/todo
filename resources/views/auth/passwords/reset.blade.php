@@ -7,8 +7,16 @@
                 <nav class="panel panel-default">
                     <div class="panel-heading">パスワード再発行</div>
                     <div class="panel-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $message)
+                                    <p>{{ $message }}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <form action="{{ route('password.update') }}" method="post">
                             @csrf
+                                <input type="hidden" name="token" value="{{ $token }}">
                             <div class="form-group">
                                 <label for="email">メールアドレス</label>
                                 <input type="text" class="form-control" id="email" name="email">
