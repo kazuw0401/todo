@@ -24,9 +24,12 @@ class TaskController extends Controller
 
         return view('tasks/index', [
             'folders' => $folders,
+
             'current_folder_id' => $id,
-            'tasks' => $tasks,
+            'tasks' => Task::due_date_order($tasks->due_date_arrange),
         ]);
+
+
     }
 
     public function showCreateForm(int $id)
@@ -49,6 +52,8 @@ class TaskController extends Controller
         return redirect()->route('tasks.index', [
             'id' => $current_folder->id,
         ]);
+
+
     }
 
     public function showEditForm(int $id, int $task_id)

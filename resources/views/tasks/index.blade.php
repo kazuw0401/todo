@@ -35,20 +35,33 @@
                         <thead>
                             <tr>
                                 <th>タイトル</th>
-                                <th>状態</th>
-                                <th>期限</th>
+                                <th>
+                                    状態
+                                </th>
+                                <th>
+                                    期限
+                                    <select name="due_date_arrange" id="">
+                                        <option value="due_date_asc">期限日昇順</option>
+                                        <option value="due_date_desc">期限日降順</option>
+                                        <option value="created_at_asc">タスク作成日昇順</option>
+                                        <option value="created_at_desc">タスク作成日降順</option>
+                                    </select>
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($tasks as $task)
+    {{ $tasks->title }}
+@endforeach
+                            @foreach ($tasks as $task)
                                 <tr>
-                                <td>{{ $task->title }}</td>
-                                <td>
-                                <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
-                                </td>
-                                <td>{{ $task->formatted_due_date }}</td>
-                                <td><a href="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
+                                    <td>{{ $task->title }}</td>
+                                    <td>
+                                        <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
+                                    </td>
+                                    <td>{{ $task->formatted_due_date }}</td>
+                                    <td><a href="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
