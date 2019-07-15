@@ -36,7 +36,13 @@
                             <tr>
                                 <th>タイトル</th>
                                 <th>状態</th>
-                                <th>期限</th>
+                                <th>期限<select name="due_date_arrange" id="">
+                                        <option value="">フィルタリング</option>
+                                        <option value="due_date_asc">期限日昇順</option>
+                                        <option value="due_date_desc">期限日降順</option>
+                                        {{-- <option value="created_at_asc">タスク作成日昇順</option>
+                                        <option value="created_at_desc">タスク作成日降順</option> --}}
+                                    </select></th>
                                 <th></th>
                             </tr>
                         </thead>

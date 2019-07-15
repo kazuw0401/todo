@@ -23,11 +23,11 @@ class TaskController extends Controller
 
         // 選ばれたフォルダに紐づくタスクを取得する
         $tasks = $folder->tasks()->get();
-
         return view('tasks/index', [
             'folders' => $folders,
             'current_folder_id' => $folder->id,
-            'tasks' => $tasks,
+            'tasks' => Task::dueDateOrder($tasks->due_date_arrange),
+            // 'tasks' => $tasks,
         ]);
     }
 

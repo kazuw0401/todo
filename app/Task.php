@@ -57,4 +57,21 @@ class Task extends Model
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])
             ->format('Y-m-d');
     }
+
+    static public function dueDateOrder($due_date_arrange)
+    {
+        // thisを変更する必要あり
+        $due_date_arrange = $this->attributes['due_date'];
+        if ($due_date_arrange == 'due_date_asc') {
+            return $this->orderBy('due_date', 'due_date_asc')->get();
+        } elseif ($due_date_arrange == 'due_date_desc') {
+            return $this->orderBy('due_date', 'due_date_desc')->get();
+        // } elseif ($due_date_arrange == 'created_at_asc') {
+        //     return $this->orderBy('due_date', 'created_at_asc')->get();
+        // } elseif ($due_date_arrange == 'created_at_desc') {
+        //     return $this->orderBy('due_date', 'created_at_desc')->get();
+        } else {
+            return $this->all();
+        }
+    }
 }
